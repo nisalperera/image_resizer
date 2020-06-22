@@ -1,0 +1,8 @@
+{
+    "image_path": "./images",
+    "annotations_path": "./images",
+    "image_size": [500, 500],
+    "image_output": "./output",
+    "annotations_output": "",
+    "same_folder": "True"
+}
