@@ -1,8 +1,8 @@
 {
-    "image_path": "./images",
-    "annotations_path": "./images",
+    "image_path": "./data/images",
+    "annotations_path": "./data/annotations",
     "image_size": [500, 500],
-    "image_output": "./output",
-    "annotations_output": "",
-    "same_folder": "True"
+    "image_output": "./output/images",
+    "annotations_output": "./output/annotations",
+    "same_folder": false
 }

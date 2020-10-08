@@ -7,6 +7,7 @@ from resizer.annotation import open_xml
 from resizer.images import resizer
 
 image_formats = [".jpg", ".png", ".jpeg"]
+annotation_formats = (".xml", ".txt")
 
 
 def check_image_format(image_file_ext):
@@ -42,8 +43,8 @@ def load_images_annotations(image_path, annotation_path, image_size, image_outpu
         annotations_list = os.listdir(annotation_path)
         wrong_annotation_formats = []
         for annotation in annotations_list:
-            xml = os.path.splitext(annotation)[-1]
-            if xml == ".xml":
+            # xml = os.path.splitext(annotation)[-1]
+            if annotation.lower().endswith(annotation_formats):
                 # correct_annotations.append(annotation)
                 continue
             else:
@@ -67,7 +68,7 @@ def load_images_annotations(image_path, annotation_path, image_size, image_outpu
 if __name__ == '__main__':
     logger = logging.getLogger()
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", help="Path to the config file")
+    parser.add_argument("--config", default="./config.json", help="Path to the config file")
     args = parser.parse_args()
 
     config = args.config
@@ -77,5 +78,5 @@ if __name__ == '__main__':
 
     load_images_annotations(config_file["image_path"], config_file["annotations_path"], tuple(config_file["image_size"]),
                             config_file["image_output"], config_file["annotations_output"],
-                            bool(config_file["same_folder"]))
+                            config_file["same_folder"])
 
